@@ -851,7 +851,11 @@ class ClientScreen(QDialog):
     #initializing and loading client screen	
     def __init__(self):	
         super(ClientScreen, self).__init__()	
-        loadUi("addClient.ui", self)	
+        loadUi("addClient.ui", self)
+        self.rnofield.setPlaceholderText("Roll number of client")
+        self.namefield.setPlaceholderText("Name of the client")
+        self.phonefield.setPlaceholderText("Phone number of client")
+        self.efield.setPlaceholderText("EmailID of client")
         self.homeButton.clicked.connect(self.gotodash)	
         self.addButton.clicked.connect(self.addprocess)	
         self.logout.clicked.connect(self.gotologout)	
