@@ -1,5 +1,6 @@
 #importing necessary modules
-import pywhatkit, datetime, time
+import pywhatkit
+import datetime, time
 import dbdetails, db
 import sys
 from PyQt5.uic import loadUi
@@ -196,6 +197,7 @@ class IssueBooks(QDialog):
         self.reminderButton.clicked.connect(self.reminderprocess)
         self.tableButton.clicked.connect(self.gotoissuetable)
         self.portalButton.clicked.connect(self.gotoremportal)
+        
         try:
             cursor.execute("SELECT * FROM IssueDetails ORDER BY Date_issued DESC")
             result = cursor.fetchall()
@@ -210,67 +212,87 @@ class IssueBooks(QDialog):
             self.confirm.setText("Something went wrong.")
 
     def issueprocess(self):
+        global Rollno
+        global Book
+        global Author
+        global Spno
         Spno = self.spnofield.text()
         Book = self.bookfield.text()
         Author = self.authorfield.text()
         Rollno = self.rollnofield.text()
-        if Spno:
-            cursor.execute("SELECT * FROM Register WHERE Sp_no = {}".format(Spno, ))
-            data = cursor.fetchall()
-            if data:
-                cursor.execute("SELECT Status FROM IssueDetails WHERE Sp_no = {} ORDER BY Date_issued DESC LIMIT 1".format(Spno, ))
+        cursor.execute("SELECT * FROM Register WHERE Sp_no = {}".format(Spno, ))
+        data = cursor.fetchall()
+                        
+        def new():
+            global Rollno
+            global Book
+            global Author
+            global Spno
+            
+            if not Author:
+                cursor.execute("SELECT Author_Name FROM Register WHERE Sp_no = {}".format(Spno, ))
                 a = cursor.fetchone()
-                status = ""
                 if a:
+                    Author = ""
                     for i in a:
-                        status += i
+                        Author += i
+            if not Book:
+                cursor.execute("SELECT Book_Title FROM Register WHERE Sp_no = {}".format(Spno, ))
+                a = cursor.fetchone()
+                if a:
+                    Book = ""
+                    for i in a:
+                        Book += i
+            if Rollno:
+                try:
+                    y= datetime.datetime.now()+datetime.timedelta(days=7)
+                    y=str(y)
+                    cursor.execute("""INSERT INTO IssueDetails(Sp_no, Book_Title, Author_Name, Roll_no,due)
+                    VALUES ({}, '{}', '{}', {},'{}')""".format(Spno, Book, Author, Rollno,y))
+                    mydb.commit()
+                    self.confirm.setText("Book issued!")
+                except mysql.connector.Error as Err:
+                    self.confirm.setText("Something went wrong. Please check the values and try again.")
+                    print(Err)
+            else:
+                self.confirm.setText("Something went wrong. Please check the values and try again.")
+
+
+            cursor.execute("SELECT * FROM IssueDetails ORDER BY Date_issued DESC")
+            result = cursor.fetchall()
+            if result:
+                self.registertable.setRowCount(len(result))
+                self.registertable.setColumnCount(len(result[0]))
+                self.registertable.setRowCount(0)
+                for row_number, row_data in enumerate(result):
+                    self.registertable.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                    #print(column_number)
+                        self.registertable.setItem(
+                            row_number, column_number, QTableWidgetItem(str(data)))
+            else:
+                pass
+        if data:
+            cursor.execute("SELECT Status FROM IssueDetails WHERE Sp_no = {} ORDER BY Date_issued DESC LIMIT 1".format(Spno, ))
+            a = cursor.fetchone()
+            if a:
+                status = ""
+                for i in a:
+                    status += i
+
+                else:
+                    pass
+                
                 if str(status) == "Borrowed":
                     self.confirm.setText("Book is already borrowed. Mark returned and try again.")
                 else:
-                    if not Author:
-                        cursor.execute("SELECT Author_Name FROM Register WHERE Sp_no = {}".format(Spno, ))
-                        a = cursor.fetchone()
-                        if a:
-                            Author = ""
-                            for i in a:
-                                Author += i
-                    if not Book:
-                        cursor.execute("SELECT Book_Title FROM Register WHERE Sp_no = {}".format(Spno, ))
-                        a = cursor.fetchone()
-                        if a:
-                            Book = ""
-                            for i in a:
-                                Book += i
-                    if Rollno:
-                        try:
-                            y = datetime.datetime.now()+datetime.timedelta(days=7)
-                            y=str(y)
-                            cursor.execute("""INSERT INTO IssueDetails(Sp_no, Book_Title, Author_Name, Roll_no, Due)
-                            VALUES ({}, '{}', '{}', {}, '{}')""".format(Spno, Book, Author, Rollno, y))
-                            mydb.commit()
-                            self.confirm.setText("Book issued!")
-                        except mysql.connector.Error as Err:
-                            self.confirm.setText("Something went wrong. Please check the values and try again.")
-                            print(Err)
-                    else:
-                        self.confirm.setText("Please enter the roll number to be issued for.")
+                    new()
+
             else:
-                self.confirm.setText("The book does not exist.")
-        else:
-            self.confirm.setText("Enter specimen number.")
+                new()
 
-        cursor.execute("SELECT * FROM IssueDetails ORDER BY Date_issued DESC")
-        result = cursor.fetchall()
-        if result:
-            self.registertable.setColumnCount(len(result[0]))
-            self.registertable.setRowCount(0)
-            for row_number, row_data in enumerate(result):
-                self.registertable.insertRow(row_number)
-                for column_number, data in enumerate(row_data):
-                    self.registertable.setItem(row_number, column_number, QTableWidgetItem(str(data)))
         else:
-            pass
-
+            self.confirm.setText("Book not found")
     def returnprocess(self):
         Spno = self.returnedspnofield.text()
         if Spno:
