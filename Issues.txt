@@ -1,13 +1,15 @@
 MINOR:
-1; The command to clear the page ie. to start program again doesnot work, system responds by closing the whole program. It is to be noted that this feature worked in linux os.
+1; FIXED =The command to clear the page ie. to start program again doesnot work, system responds by closing the whole program. It is to be noted that this feature worked in linux os.
+HOW: A new connection is established for each window 
 2;The icon applied is not visible in the footer bar
-3; In searching for a record, The user may enter a wrong category
+3; FIXED=In searching for a record, The user may enter a wrong category
+HOW: By using a category box option
 4;Producing a map for an ever changing library
 5;For sending the qr, info of issue automatic messaging with either whatsapp or mail can be used the pc should have a good internet supply
-6:Xampp and cmd should be open continuously for the processes to taake place.
+6:Xampp and cmd should be open continuously for the processes to take place.
 
 MAJOR:
-1: The auto incremented values of sno does not change when a record is deleted (serious threat)
+1: (USED ANOTHER WAY)The auto incremented values of sno does not change when a record is deleted (serious threat)
 ex'
 incase 2 is deleted:
 
@@ -19,8 +21,12 @@ incase 2 is deleted:
 expected outcome:
 The next values should move one value down.
 3 should become 2
+HOW: (ONLY SPNO IS GIVEN IN TABLE AND SNO IS DISPLAYED IN TABLE WIDGET SO A TEMPORARY FIX)
 
-2;Its almost impossible to scroll screen in pyqt5. After some usage tables may span more than 1 page
+
+2;(USED ANOTHER WAY)Its almost impossible to scroll screen in pyqt5. After some usage tables may span more than 1 page
+HOW:
+THE PAGE IS NOT SCROLLABLE BUT THE TABLE IS SCROLLABLE
 
 DOUBTS:<time constraints>
 1;The initial welcome screen may not be added.
