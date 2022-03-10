@@ -9,5 +9,9 @@ def execute():
 
     dbUSER = "root" #your mysql user name here
     dbPASS = "biancaa" #your mysql user password here
+    
+   # In case of mysql the default password=''
+   #set password by:
+    #ALTER USER 'root'@'localhost' IDENTIFIED BY 'yourdesiredpassword';
     return dbUSER, dbPASS
 
