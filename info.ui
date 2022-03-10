@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>500</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>800</width>
-    <height>500</height>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>800</width>
-    <height>500</height>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -43,13 +43,13 @@
      <property name="minimumSize">
       <size>
        <width>800</width>
-       <height>500</height>
+       <height>600</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>800</width>
-       <height>500</height>
+       <height>600</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -57,18 +57,18 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_5">
       <property name="leftMargin">
-       <number>10</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
-       <number>10</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>10</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>10</number>
+       <number>0</number>
       </property>
-      <item row="0" column="0">
+      <item row="0" column="1">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <spacer name="horizontalSpacer_6">
@@ -78,7 +78,7 @@
           <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
          </spacer>
@@ -90,11 +90,12 @@
             <family>Trebuchet MS</family>
             <pointsize>14</pointsize>
             <weight>50</weight>
+            <italic>false</italic>
             <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true"/>
+           <string notr="true">font: 14pt &quot;Trebuchet MS&quot;;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
@@ -103,12 +104,25 @@
            <enum>QFrame::Raised</enum>
           </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;This desktop app was developed using python language with PyQt5 module for the GUI.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;It's a Library Management system to make the process of keeping track of records easier. Based on MySQL, searching for books, adding and deleting them and also modifying the records have been made much easier.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;It can also send reminders to the clients through whatsapp by the use of pywhatkit&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;This was developed by&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;This desktop app was developed using python language with PyQt5 module for the GUI.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;It's a Library Management system to make the process of keeping track of records easier. Based on MySQL, searching for books, adding and deleting them and also modifying the records have been made much easier.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;It can also send reminders to the clients through whatsapp by the use of pywhatkit.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;This was developed by&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="wordWrap">
            <bool>true</bool>
           </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_2">
@@ -122,19 +136,38 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>40</width>
-              <height>40</height>
+              <width>200</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>50</height>
              </size>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color:rgb(255, 85, 127);
 color:rgb(255, 255, 255);
-font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
+font: 16pt &quot;Calibri&quot;;</string>
             </property>
             <property name="text">
              <string>Avanthika .A</string>
             </property>
            </widget>
+          </item>
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item row="0" column="3">
            <widget class="QPushButton" name="pushButton">
@@ -146,14 +179,20 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>40</width>
-              <height>40</height>
+              <width>200</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>50</height>
              </size>
             </property>
             <property name="styleSheet">
              <string notr="true">BACKGROUND-COLOR:rgb(255, 85, 127);
 COLOR:rgb(255, 255, 255);
-font: 16pt &quot;MS Shell Dlg 2&quot;;
+font: 16pt &quot;Calibri&quot;;
 </string>
             </property>
             <property name="text">
@@ -168,20 +207,7 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="0" column="0">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
+              <width>20</width>
               <height>20</height>
              </size>
             </property>
@@ -194,7 +220,7 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
+              <width>20</width>
               <height>20</height>
              </size>
             </property>
@@ -203,12 +229,28 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;
          </layout>
         </item>
         <item>
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>10</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLabel" name="label">
           <property name="styleSheet">
-           <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
+           <string notr="true">font: 14pt &quot;Trebuchet MS&quot;;</string>
           </property>
           <property name="text">
-           <string>        of class 12 For their CS project LIBRARY MANAGEMENT SYSTEM 2021-2022</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;of class 12 For their CS project 2021-2022&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;LIBRARY MANAGEMENT SYSTEM &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -256,8 +298,14 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;
             </property>
             <property name="minimumSize">
              <size>
-              <width>50</width>
-              <height>20</height>
+              <width>100</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>40</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -281,12 +329,38 @@ color: white;</string>
           <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
-            <height>50</height>
+            <height>40</height>
            </size>
           </property>
          </spacer>
         </item>
        </layout>
+      </item>
+      <item row="0" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>

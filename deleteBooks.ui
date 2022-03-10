@@ -384,15 +384,68 @@ border : 1px solid rgb(75, 62, 87);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="confirm">
-            <property name="styleSheet">
-             <string notr="true">font: 13pt &quot;Calibri&quot; bold;
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="confirm">
+              <property name="minimumSize">
+               <size>
+                <width>800</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Calibri&quot; bold;
 color:rgb(170, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QPushButton" name="confirmbutton">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color:rgb(75, 62, 87);
+background-color:rgb(178, 182, 255);
+border : 1px solid rgb(75, 62, 87);
+
+</string>
+              </property>
+              <property name="text">
+               <string>PROCEED</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>5</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="horizontalSpacer_5">
@@ -502,64 +555,6 @@ color:rgb(170, 0, 0);</string>
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QGridLayout" name="gridLayout_2">
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="confirmbutton">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>150</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 11pt &quot;Calibri&quot;;
-color:rgb(75, 62, 87);
-background-color:rgb(178, 182, 255);
-border : 1px solid rgb(75, 62, 87);
-
-</string>
-              </property>
-              <property name="text">
-               <string>PROCEED</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="confirm2">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(75, 62, 87);
-font: 13pt &quot;Calibri&quot;;</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
            <spacer name="horizontalSpacer_6">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -567,7 +562,7 @@ font: 13pt &quot;Calibri&quot;;</string>
             <property name="sizeHint" stdset="0">
              <size>
               <width>40</width>
-              <height>20</height>
+              <height>40</height>
              </size>
             </property>
            </spacer>

@@ -230,7 +230,28 @@ color: rgb(255, 85, 127);</string>
             <property name="topMargin">
              <number>0</number>
             </property>
-            <item row="2" column="1">
+            <item row="1" column="0">
+             <widget class="QLabel" name="category">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color: rgb(75, 62, 87);
+border : 1px solid rgb(75, 62, 87);</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Category&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
              <widget class="QComboBox" name="categoryBox">
               <property name="minimumSize">
                <size>
@@ -291,77 +312,6 @@ color: rgb(255, 85, 127);</string>
               </item>
              </widget>
             </item>
-            <item row="1" column="1">
-             <spacer name="horizontalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>50</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="category">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 11pt &quot;Calibri&quot;;
-color: rgb(75, 62, 87);
-border : 1px solid rgb(75, 62, 87);</string>
-              </property>
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Category&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>50</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="newrecordfield">
-              <property name="minimumSize">
-               <size>
-                <width>684</width>
-                <height>41</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgba(0, 0, 0, 0);
-border:1px solid rgb(0, 55, 80);
-color: rgb(0, 55, 80);
-font: 75 14pt &quot;Calibri&quot; bold;
-
-</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="placeholderText">
-               <string/>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="0">
              <widget class="QPushButton" name="searchButton">
               <property name="minimumSize">
@@ -388,10 +338,92 @@ border : 1px solid rgb(75, 62, 87);
               </property>
              </widget>
             </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="newrecordfield">
+              <property name="minimumSize">
+               <size>
+                <width>684</width>
+                <height>41</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(0, 0, 0, 0);
+border:1px solid rgb(0, 55, 80);
+color: rgb(0, 55, 80);
+font: 75 14pt &quot;Calibri&quot; bold;
+
+</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item>
            <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="confirm">
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Calibri&quot; bold;
+color:rgb(170, 0, 0);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="confirmbutton">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color:rgb(75, 62, 87);
+background-color:rgb(178, 182, 255);
+
+
+</string>
+              </property>
+              <property name="text">
+               <string>PROCEED</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_8">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -504,30 +536,6 @@ border : 1px solid rgb(75, 62, 87);
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="confirm">
-            <property name="styleSheet">
-             <string notr="true">font: 13pt &quot;Calibri&quot; bold;
-color:rgb(170, 0, 0);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
            <spacer name="horizontalSpacer_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -535,47 +543,7 @@ color:rgb(170, 0, 0);</string>
             <property name="sizeHint" stdset="0">
              <size>
               <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="confirmbutton">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
               <height>40</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>150</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 11pt &quot;Calibri&quot;;
-color:rgb(75, 62, 87);
-background-color:rgb(178, 182, 255);
-
-
-</string>
-            </property>
-            <property name="text">
-             <string>PROCEED</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_6">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
              </size>
             </property>
            </spacer>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1495</width>
+    <width>1400</width>
     <height>750</height>
    </rect>
   </property>
@@ -104,6 +104,9 @@
            </property>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item>
               <spacer name="verticalSpacer">
                <property name="orientation">
@@ -112,7 +115,7 @@
                <property name="sizeHint" stdset="0">
                 <size>
                  <width>20</width>
-                 <height>40</height>
+                 <height>1000</height>
                 </size>
                </property>
               </spacer>
@@ -121,7 +124,7 @@
               <widget class="QPushButton" name="tableButton">
                <property name="minimumSize">
                 <size>
-                 <width>125</width>
+                 <width>300</width>
                  <height>100</height>
                 </size>
                </property>
@@ -156,7 +159,7 @@ color: rgb(190, 159, 221);</string>
               <widget class="QPushButton" name="portalButton">
                <property name="minimumSize">
                 <size>
-                 <width>125</width>
+                 <width>300</width>
                  <height>100</height>
                 </size>
                </property>
@@ -171,10 +174,10 @@ background-color:rgb(75, 62, 87);</string>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="reminderButton">
+              <widget class="QPushButton" name="logout">
                <property name="minimumSize">
                 <size>
-                 <width>125</width>
+                 <width>300</width>
                  <height>100</height>
                 </size>
                </property>
@@ -184,42 +187,37 @@ color:rgb(190, 159, 221);
 background-color:rgb(75, 62, 87);</string>
                </property>
                <property name="text">
-                <string>SEND REMINDER TO THIS USER</string>
+                <string> LOGOUT</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>logout icon.png</normaloff>logout icon.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
                </property>
               </widget>
              </item>
             </layout>
            </item>
-           <item>
-            <widget class="QPushButton" name="logout">
-             <property name="minimumSize">
-              <size>
-               <width>300</width>
-               <height>100</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">font: 18pt &quot;Calibri&quot;;
-color:rgb(190, 159, 221);
-background-color:rgb(75, 62, 87);</string>
-             </property>
-             <property name="text">
-              <string> LOGOUT</string>
-             </property>
-             <property name="icon">
-              <iconset>
-               <normaloff>logout icon.png</normaloff>logout icon.png</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>30</width>
-               <height>30</height>
-              </size>
-             </property>
-            </widget>
-           </item>
           </layout>
          </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -234,49 +232,46 @@ background-color:rgb(75, 62, 87);</string>
             <property name="sizeHint" stdset="0">
              <size>
               <width>40</width>
-              <height>20</height>
+              <height>50</height>
              </size>
             </property>
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="libraryRecords">
-            <property name="styleSheet">
-             <string notr="true">font-size: 30px;
+           <layout class="QGridLayout" name="gridLayout_6">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="libraryRecords">
+              <property name="styleSheet">
+               <string notr="true">font-size: 30px;
 font: 75 26pt &quot;Trebuchet MS&quot;;
-color: rgb(255, 85, 127);</string>
-            </property>
-            <property name="text">
-             <string>ISSUE DETAILS</string>
-            </property>
-            <property name="textFormat">
-             <enum>Qt::AutoText</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="styleSheet">
-             <string notr="true">color: rgb(75, 62, 87);
-font: 13pt &quot;Calibri&quot;;</string>
-            </property>
-            <property name="text">
-             <string>ISSUE A BOOK</string>
-            </property>
-           </widget>
+font: bold;
+color: rgb(255, 85, 127);
+</string>
+              </property>
+              <property name="text">
+               <string>ISSUE DETAILS</string>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label">
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color: rgb(75, 62, 87);
+</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;ISSUE A BOOK&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="horizontalSpacer_10">
@@ -348,10 +343,9 @@ border : 1px solid rgb(75, 62, 87);</string>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(0, 0, 0, 0);
-margin: 2px;
 border:1px solid rgb(0, 85, 127);
 color: rgb(0, 85, 127);
-font: 75 11pt &quot;Verdana&quot;;
+font: 11pt &quot;Calibri&quot; bold;
 
 </string>
               </property>
@@ -373,10 +367,9 @@ font: 75 11pt &quot;Verdana&quot;;
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(0, 0, 0, 0);
-margin: 2px;
 border:1px solid rgb(0, 85, 127);
 color: rgb(0, 85, 127);
-font: 75 11pt &quot;Verdana&quot;;
+font: 11pt &quot;Calibri&quot; bold;
 
 </string>
               </property>
@@ -440,10 +433,9 @@ border : 1px solid rgb(75, 62, 87);</string>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(0, 0, 0, 0);
-margin: 2px;
 border:1px solid rgb(0, 85, 127);
 color: rgb(0, 85, 127);
-font: 75 11pt &quot;Verdana&quot;;
+font: 11pt &quot;Calibri&quot; bold;
 
 </string>
               </property>
@@ -465,10 +457,9 @@ font: 75 11pt &quot;Verdana&quot;;
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(0, 0, 0, 0);
-margin: 2px;
 border:1px solid rgb(0, 85, 127);
 color: rgb(0, 85, 127);
-font: 75 11pt &quot;Verdana&quot;;
+font: 11pt &quot;Calibri&quot; bold;
 
 </string>
               </property>
@@ -496,10 +487,138 @@ font: 75 11pt &quot;Verdana&quot;;
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="confirm">
+           <layout class="QGridLayout" name="gridLayout_5">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="4">
+             <widget class="QPushButton" name="reminderButton">
+              <property name="minimumSize">
+               <size>
+                <width>280</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color:rgb(75, 62, 87);
+background-color:rgb(178, 182, 255);
+
+
+</string>
+              </property>
+              <property name="text">
+               <string>SEND REMINDER TO THIS USER</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <spacer name="horizontalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>5</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>400</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="2">
+             <widget class="QPushButton" name="issuebutton">
+              <property name="minimumSize">
+               <size>
+                <width>110</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color:rgb(75, 62, 87);
+background-color:rgb(178, 182, 255);
+
+
+</string>
+              </property>
+              <property name="text">
+               <string>ISSUE BOOK</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="confirm">
+              <property name="minimumSize">
+               <size>
+                <width>610</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 13pt &quot;Calibri&quot; bold;
+color:rgb(170, 0, 0);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>2</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>2</height>
+             </size>
+            </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(75, 62, 87);
-font: 13pt &quot;Calibri&quot;;</string>
+             <string notr="true">background-color: rgb(75, 62, 87);</string>
             </property>
             <property name="text">
              <string/>
@@ -507,7 +626,159 @@ font: 13pt &quot;Calibri&quot;;</string>
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_5">
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="7">
+             <widget class="QLabel" name="label_2">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color: rgb(75, 62, 87);
+</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;RETURN A BOOK&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <spacer name="horizontalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="0">
+             <widget class="QPushButton" name="returnbutton">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color:rgb(75, 62, 87);
+background-color:rgb(178, 182, 255);
+
+
+</string>
+              </property>
+              <property name="text">
+               <string>MARK RETURNED</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="4">
+             <widget class="QLineEdit" name="returnedspnofield">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>41</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgba(0, 0, 0, 0);
+border:1px solid rgb(0, 85, 127);
+color: rgb(0, 85, 127);
+font: 11pt &quot;Calibri&quot; bold;
+
+</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="5">
+             <spacer name="horizontalSpacer_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>250</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="category_5">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Calibri&quot;;
+color: rgb(75, 62, 87);
+border : 1px solid rgb(75, 62, 87);</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Sp no. of book&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -552,11 +823,11 @@ BACKGROUND-COLOR:RGB(0,0,,0,0);</string>
             <property name="columnCount">
              <number>7</number>
             </property>
-            <attribute name="horizontalHeaderDefaultSectionSize">
-             <number>170</number>
-            </attribute>
             <attribute name="horizontalHeaderMinimumSectionSize">
              <number>33</number>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>150</number>
             </attribute>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>false</bool>
@@ -599,159 +870,10 @@ BACKGROUND-COLOR:RGB(0,0,,0,0);</string>
             </column>
             <column>
              <property name="text">
-              <string>due</string>
+              <string>Due</string>
              </property>
             </column>
            </widget>
-          </item>
-          <item>
-           <layout class="QGridLayout" name="gridLayout_2">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>20</number>
-            </property>
-            <item row="0" column="3">
-             <spacer name="horizontalSpacer_8">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="6">
-             <widget class="QPushButton" name="returnbutton">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>150</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 11pt &quot;Calibri&quot;;
-color:rgb(75, 62, 87);
-background-color:rgb(178, 182, 255);
-border : 1px solid rgb(75, 62, 87);
-
-</string>
-              </property>
-              <property name="text">
-               <string>MARK RETURNED</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="category_5">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 11pt &quot;Calibri&quot;;
-color: rgb(75, 62, 87);
-border : 1px solid rgb(75, 62, 87);</string>
-              </property>
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Sp no.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="4">
-             <widget class="QLineEdit" name="returnedspnofield">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>41</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgba(0, 0, 0, 0);
-margin: 2px;
-border:1px solid rgb(0, 85, 127);
-color: rgb(0, 85, 127);
-font: 75 11pt &quot;Verdana&quot;;
-
-</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="placeholderText">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="5">
-             <spacer name="horizontalSpacer_9">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="issuebutton">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>150</width>
-                <height>40</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 11pt &quot;Calibri&quot;;
-color:rgb(75, 62, 87);
-background-color:rgb(178, 182, 255);
-border : 1px solid rgb(75, 62, 87);
-
-</string>
-              </property>
-              <property name="text">
-               <string>ISSUE BOOK</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <spacer name="horizontalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>250</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
           </item>
           <item>
            <spacer name="horizontalSpacer_4">
@@ -761,25 +883,25 @@ border : 1px solid rgb(75, 62, 87);
             <property name="sizeHint" stdset="0">
              <size>
               <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_6">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
+              <height>50</height>
              </size>
             </property>
            </spacer>
           </item>
          </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>

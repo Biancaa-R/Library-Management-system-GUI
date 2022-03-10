@@ -1,6 +1,5 @@
 #importing necessary modules
-import pywhatkit
-import datetime, time
+import pywhatkit, datetime, time
 import dbdetails, db
 import sys
 from PyQt5.uic import loadUi
@@ -197,7 +196,6 @@ class IssueBooks(QDialog):
         self.reminderButton.clicked.connect(self.reminderprocess)
         self.tableButton.clicked.connect(self.gotoissuetable)
         self.portalButton.clicked.connect(self.gotoremportal)
-        
         try:
             cursor.execute("SELECT * FROM IssueDetails ORDER BY Date_issued DESC")
             result = cursor.fetchall()
@@ -220,79 +218,83 @@ class IssueBooks(QDialog):
         Book = self.bookfield.text()
         Author = self.authorfield.text()
         Rollno = self.rollnofield.text()
-        cursor.execute("SELECT * FROM Register WHERE Sp_no = {}".format(Spno, ))
-        data = cursor.fetchall()
-                        
-        def new():
-            global Rollno
-            global Book
-            global Author
-            global Spno
-            
-            if not Author:
-                cursor.execute("SELECT Author_Name FROM Register WHERE Sp_no = {}".format(Spno, ))
-                a = cursor.fetchone()
-                if a:
-                    Author = ""
-                    for i in a:
-                        Author += i
-            if not Book:
-                cursor.execute("SELECT Book_Title FROM Register WHERE Sp_no = {}".format(Spno, ))
-                a = cursor.fetchone()
-                if a:
-                    Book = ""
-                    for i in a:
-                        Book += i
-            if Rollno:
-                try:
-                    y= datetime.datetime.now()+datetime.timedelta(days=7)
-                    y=str(y)
-                    cursor.execute("""INSERT INTO IssueDetails(Sp_no, Book_Title, Author_Name, Roll_no,due)
-                    VALUES ({}, '{}', '{}', {},'{}')""".format(Spno, Book, Author, Rollno,y))
-                    mydb.commit()
-                    self.confirm.setText("Book issued!")
-                except mysql.connector.Error as Err:
+        if Spno:
+            cursor.execute("SELECT * FROM Register WHERE Sp_no = {}".format(Spno, ))
+            data = cursor.fetchall()
+                            
+            def new():
+                global Rollno
+                global Book
+                global Author
+                global Spno
+                
+                if not Author:
+                    cursor.execute("SELECT Author_Name FROM Register WHERE Sp_no = {}".format(Spno, ))
+                    a = cursor.fetchone()
+                    if a:
+                        Author = ""
+                        for i in a:
+                            Author += i
+                if not Book:
+                    cursor.execute("SELECT Book_Title FROM Register WHERE Sp_no = {}".format(Spno, ))
+                    a = cursor.fetchone()
+                    if a:
+                        Book = ""
+                        for i in a:
+                            Book += i
+                if Rollno:
+                    try:
+                        y= datetime.datetime.now()+datetime.timedelta(days=7)
+                        y=str(y)
+                        cursor.execute("""INSERT INTO IssueDetails(Sp_no, Book_Title, Author_Name, Roll_no,due)
+                        VALUES ({}, '{}', '{}', {},'{}')""".format(Spno, Book, Author, Rollno,y))
+                        mydb.commit()
+                        self.confirm.setText("Book issued!")
+                    except mysql.connector.Error as Err:
+                        self.confirm.setText("Something went wrong. Please check the values and try again.")
+                        print(Err)
+                else:
                     self.confirm.setText("Something went wrong. Please check the values and try again.")
-                    print(Err)
-            else:
-                self.confirm.setText("Something went wrong. Please check the values and try again.")
 
 
-            cursor.execute("SELECT * FROM IssueDetails ORDER BY Date_issued DESC")
-            result = cursor.fetchall()
-            if result:
-                self.registertable.setRowCount(len(result))
-                self.registertable.setColumnCount(len(result[0]))
-                self.registertable.setRowCount(0)
-                for row_number, row_data in enumerate(result):
-                    self.registertable.insertRow(row_number)
-                    for column_number, data in enumerate(row_data):
-                    #print(column_number)
-                        self.registertable.setItem(
-                            row_number, column_number, QTableWidgetItem(str(data)))
-            else:
-                pass
-        if data:
-            cursor.execute("SELECT Status FROM IssueDetails WHERE Sp_no = {} ORDER BY Date_issued DESC LIMIT 1".format(Spno, ))
-            a = cursor.fetchone()
-            if a:
-                status = ""
-                for i in a:
-                    status += i
-
+                cursor.execute("SELECT * FROM IssueDetails ORDER BY Date_issued DESC")
+                result = cursor.fetchall()
+                if result:
+                    self.registertable.setRowCount(len(result))
+                    self.registertable.setColumnCount(len(result[0]))
+                    self.registertable.setRowCount(0)
+                    for row_number, row_data in enumerate(result):
+                        self.registertable.insertRow(row_number)
+                        for column_number, data in enumerate(row_data):
+                        #print(column_number)
+                            self.registertable.setItem(
+                                row_number, column_number, QTableWidgetItem(str(data)))
                 else:
                     pass
-                
-                if str(status) == "Borrowed":
-                    self.confirm.setText("Book is already borrowed. Mark returned and try again.")
+            if data:
+                cursor.execute("SELECT Status FROM IssueDetails WHERE Sp_no = {} ORDER BY Date_issued DESC LIMIT 1".format(Spno, ))
+                a = cursor.fetchone()
+                if a:
+                    status = ""
+                    for i in a:
+                        status += i
+
+                    else:
+                        pass
+                    
+                    if str(status) == "Borrowed":
+                        self.confirm.setText("Book is already borrowed. Mark returned and try again.")
+                    else:
+                        new()
+
                 else:
                     new()
 
             else:
-                new()
-
+                self.confirm.setText("Book not found")
         else:
-            self.confirm.setText("Book not found")
+            self.confirm.setText("Something went wrong. Please check the values and try again.")
+
     def returnprocess(self):
         Spno = self.returnedspnofield.text()
         if Spno:
@@ -469,7 +471,6 @@ class ReminderPortal(QDialog):
                         name = str(name)
                         date = str(date)
                         date = date[:10]
-
                         for i in result:
                             for j in i:
                                 j = str(j)
@@ -610,28 +611,47 @@ class DeleteBooks(QDialog):
         global searchvalue, category
         searchvalue = self.searchfield.text()
         category = self.categoryBox.currentText()
-        cursor.execute("SELECT * FROM Register WHERE {} LIKE '%{}%'".format(category, searchvalue))
-        result=cursor.fetchall()
-        if not result:
-            self.confirm.setText("No record found.")
-        else:
-            self.confirm.setText("")
-            self.registertable.setColumnCount(len(result[0]))
-            self.registertable.setRowCount(0)
-            for row_number, row_data in enumerate(result):
-                self.registertable.insertRow(row_number)
-                for column_number, data in enumerate(row_data):
-                    self.registertable.setItem(row_number, column_number, QTableWidgetItem(str(data)))
-            if len(result)>1:
-                confirmbox = confirmBox()
-                if confirmbox.exec_():
-                    self.confirm.setText("Click on proceed.")
-                    self.confirmbutton.clicked.connect(self.multidelete)
-                else:
-                    self.confirm.setText("Please search using another value such that only 1 required record is visible.")
+        if searchvalue:
+            cursor.execute("SELECT * FROM Register WHERE {} LIKE '%{}%'".format(category, searchvalue))
+            result=cursor.fetchall()
+            if not result:
+                self.confirm.setText("No record found.")
             else:
-                self.confirm.setText("Click on proceed.")
-                self.confirmbutton.clicked.connect(self.singledelete)
+                self.confirm.setText("")
+                self.registertable.setColumnCount(len(result[0]))
+                self.registertable.setRowCount(0)
+                for row_number, row_data in enumerate(result):
+                    self.registertable.insertRow(row_number)
+                    for column_number, data in enumerate(row_data):
+                        self.registertable.setItem(row_number, column_number, QTableWidgetItem(str(data)))
+                if len(result)>1:
+                    confirmbox = confirmBox()
+                    if confirmbox.exec_():
+                        self.confirm.setText("Click on proceed.")
+                        self.confirmbutton.clicked.connect(self.multidelete)
+                    else:
+                        choose = Choose()
+                        if choose.exec_():
+                            global spno
+                            spno = choose.spnofield.text()
+                            self.confirm.setText("Click on proceed.")
+                            self.confirmbutton.clicked.connect(self.choosedelete)
+                        else:
+                            pass
+                        #self.confirm.setText("Please search using another value such that only 1 required record is visible.")
+                else:
+                    self.confirm.setText("Click on proceed.")
+                    self.confirmbutton.clicked.connect(self.singledelete)
+        else:
+            self.confirm.setText("Please enter a value.")
+
+    def choosedelete(self):
+        try:
+            cursor.execute("DELETE FROM REGISTER WHERE Sp_No = '{}'".format(spno))
+            mydb.commit()
+            self.confirm.setText("Book deleted successfully")
+        except mysql.connector.Error:
+            self.confirm.setText("Something went wrong. Please try again.")
 
     def singledelete(self):
         try:
@@ -672,6 +692,19 @@ class confirmBox(QDialog):
     def gotocancel(self):
         self.reject()
 
+class Choose(QDialog):
+    def __init__(self):
+        super(Choose, self).__init__()
+        loadUi("choose.ui", self)
+        self.okButton.clicked.connect(self.gotook)
+        self.cancelButton.clicked.connect(self.gotocancel)
+
+    def gotook(self):
+        self.accept()
+
+    def gotocancel(self):
+        self.reject()
+
 class UpdateBooks1(QDialog):
     def __init__(self):
         super(UpdateBooks1, self).__init__()
@@ -679,6 +712,10 @@ class UpdateBooks1(QDialog):
         self.homeButton.clicked.connect(self.gotodash)
         self.searchButton.clicked.connect(self.gotosearch)
         self.logout.clicked.connect(self.gotologout)
+        self.confirmbutton.clicked.connect(self.searchfirst)
+
+    def searchfirst(self):
+        self.confirm.setText("First search for the book to be updated.")        
 
     def gotosearch(self):
         global updatesearchvalue, updatecategory
@@ -696,7 +733,13 @@ class UpdateBooks1(QDialog):
                     for column_number, data in enumerate(row_data):
                         self.registertable.setItem(row_number, column_number, QTableWidgetItem(str(data)))
                 if len(result)>1:
-                    self.confirm.setText("Please search using another value such that only 1 required record is visible.")
+                    choose = Choose()
+                    if choose.exec_():
+                        updatesearchvalue = choose.spnofield.text()
+                        self.confirm.setText("Click on proceed.")
+                        self.confirmbutton.clicked.connect(self.updateBooks)
+                    else:
+                        self.confirm.setText("Enter a value.")                    
                 else:
                     self.confirm.setText("Click on proceed.")
                     self.confirmbutton.clicked.connect(self.updateBooks)
@@ -873,14 +916,14 @@ class ClientScreen(QDialog):
     #initializing and loading client screen	
     def __init__(self):	
         super(ClientScreen, self).__init__()	
-        loadUi("addClient.ui", self)
+        loadUi("addClient.ui", self)	
+        self.homeButton.clicked.connect(self.gotodash)	
+        self.addButton.clicked.connect(self.addprocess)	
+        self.logout.clicked.connect(self.gotologout)	
         self.rnofield.setPlaceholderText("Roll number of client")
         self.namefield.setPlaceholderText("Name of the client")
         self.phonefield.setPlaceholderText("Phone number of client")
         self.efield.setPlaceholderText("EmailID of client")
-        self.homeButton.clicked.connect(self.gotodash)	
-        self.addButton.clicked.connect(self.addprocess)	
-        self.logout.clicked.connect(self.gotologout)	
 
     def addprocess(self):	
         rno=self.rnofield.text()	
@@ -971,7 +1014,7 @@ widget.addWidget(welcome)
 widget.addWidget(signup)
 #widget.addWidget(dashboard)
 widget.setWindowTitle("VME Library Management")
-widget.resize(1400, 700)
+widget.resize(1400, 750)
 widget.show()
 
 try:
