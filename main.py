@@ -18,10 +18,12 @@ mydb = mysql.connector.connect(
     password = dbpass,
     database = "Library"
     )
-            
+         
 cursor = mydb.cursor()
 cursor = mydb.cursor(buffered=True)
 
+#creating the register class, displays all books and their details
+#user can search for records based on any category
 class register(QDialog):
     def __init__(self):
         super(register, self).__init__()
@@ -80,6 +82,7 @@ class register(QDialog):
         widget.addWidget(welcome)
         widget.setCurrentWidget(welcome)
 
+#creating typesearch class, to search for records by typing
 class TypeSearch(QDialog):
     def __init__(self):
         super(TypeSearch, self).__init__()
@@ -142,7 +145,7 @@ class TypeSearch(QDialog):
                 self.confirm.setText("No record exists.")
         except mysql.connector.Error:
             self.confirm.setText("Something went wrong. Please try again after checking all the values.")
-       
+      
 class SearchPage(QDialog):
     def __init__(self):
         super(SearchPage,self).__init__()
@@ -185,6 +188,7 @@ class SearchPage(QDialog):
         widget.addWidget(welcome)
         widget.setCurrentWidget(welcome)        
 
+#creating issuebooks class, can be used to both issue books or mark them returned
 class IssueBooks(QDialog):
     def __init__(self):
         super(IssueBooks, self).__init__()
@@ -208,7 +212,7 @@ class IssueBooks(QDialog):
                         self.registertable.setItem(row_number, column_number, QTableWidgetItem(str(data)))
         except mysql.connector.Error:
             self.confirm.setText("Something went wrong.")
-
+    #defining the process to issue books
     def issueprocess(self):
         global Rollno
         global Book
@@ -227,18 +231,18 @@ class IssueBooks(QDialog):
                 global Book
                 global Author
                 global Spno
-                
+                #checking for details, retrieving them if not already specified
                 if not Author:
                     cursor.execute("SELECT Author_Name FROM Register WHERE Sp_no = {}".format(Spno, ))
                     a = cursor.fetchone()
-                    if a:
+                    if a != "NULL":
                         Author = ""
                         for i in a:
                             Author += i
                 if not Book:
                     cursor.execute("SELECT Book_Title FROM Register WHERE Sp_no = {}".format(Spno, ))
                     a = cursor.fetchone()
-                    if a:
+                    if a != "NULL":
                         Book = ""
                         for i in a:
                             Book += i
@@ -246,8 +250,8 @@ class IssueBooks(QDialog):
                     try:
                         y= datetime.datetime.now()+datetime.timedelta(days=7)
                         y=str(y)
-                        cursor.execute("""INSERT INTO IssueDetails(Sp_no, Book_Title, Author_Name, Roll_no,due)
-                        VALUES ({}, '{}', '{}', {},'{}')""".format(Spno, Book, Author, Rollno,y))
+                        cursor.execute('INSERT INTO IssueDetails(Sp_no, Book_Title, Author_Name, Roll_no,due)\
+                            VALUES ({}, "{}", "{}", {},"{}")'.format(Spno, Book, Author, Rollno,y))
                         mydb.commit()
                         self.confirm.setText("Book issued!")
                     except mysql.connector.Error as Err:
@@ -294,7 +298,7 @@ class IssueBooks(QDialog):
                 self.confirm.setText("Book not found")
         else:
             self.confirm.setText("Something went wrong. Please check the values and try again.")
-
+    #defining the process of returning book
     def returnprocess(self):
         Spno = self.returnedspnofield.text()
         if Spno:
@@ -382,6 +386,7 @@ class IssueBooks(QDialog):
         widget.addWidget(dashboard)
         widget.setCurrentWidget(dashboard)
 
+#creating the issuetableclass, displays all past issues and returns of books
 class IssueTable(QDialog):
     def __init__(self):
         super(IssueTable, self).__init__()
@@ -434,6 +439,7 @@ class IssueTable(QDialog):
         widget.addWidget(welcome)
         widget.setCurrentWidget(welcome)
 
+#the reminder portal, used to send reminders to users when they have to return a book
 class ReminderPortal(QDialog):
     def __init__(self):
         super(ReminderPortal, self).__init__()
@@ -497,6 +503,8 @@ class ReminderPortal(QDialog):
         widget.addWidget(welcome)
         widget.setCurrentWidget(welcome)
 
+#creating updatemenu class, a menu to navigate to different update processes
+#which are add, delete and update
 class UpdateMenu(QDialog):
     def __init__(self):
         super(UpdateMenu, self).__init__()
@@ -532,6 +540,7 @@ class UpdateMenu(QDialog):
         widget.addWidget(updatebooks1)
         widget.setCurrentWidget(updatebooks1)
 
+#creating addbooks class, one can add new records through here
 class AddBooks(QDialog):
     def __init__(self):
         super(AddBooks, self).__init__()
@@ -595,6 +604,7 @@ class AddBooks(QDialog):
         widget.addWidget(welcome)
         widget.setCurrentWidget(welcome)
 
+#creating deletebooks class, one can delete records through here
 class DeleteBooks(QDialog):
     def __init__(self):
         super(DeleteBooks, self).__init__()
@@ -705,6 +715,7 @@ class Choose(QDialog):
     def gotocancel(self):
         self.reject()
 
+#creating updatebooks class, one can update records through here
 class UpdateBooks1(QDialog):
     def __init__(self):
         super(UpdateBooks1, self).__init__()
@@ -717,6 +728,7 @@ class UpdateBooks1(QDialog):
     def searchfirst(self):
         self.confirm.setText("First search for the book to be updated.")        
 
+#searching for a record to update
     def gotosearch(self):
         global updatesearchvalue, updatecategory
         updatesearchvalue = self.searchfield.text()
@@ -732,6 +744,7 @@ class UpdateBooks1(QDialog):
                     self.registertable.insertRow(row_number)
                     for column_number, data in enumerate(row_data):
                         self.registertable.setItem(row_number, column_number, QTableWidgetItem(str(data)))
+                #checking for similar records
                 if len(result)>1:
                     choose = Choose()
                     if choose.exec_():
@@ -772,6 +785,7 @@ class UpdateBooks2(QDialog):
         self.logout.clicked.connect(self.gotologout)
         self.confirmbutton.clicked.connect(self.updateprocess)
 
+#updating the record
     def updateprocess(self):
         try:
             newvalue = self.newrecordfield.text()
@@ -806,6 +820,7 @@ class UpdateBooks2(QDialog):
         widget.addWidget(welcome)
         widget.setCurrentWidget(welcome)
 
+#creating infobox class, displays info about our project
 class InfoBox(QDialog):
     def __init__(self):
         super(InfoBox, self).__init__(parent=welcome)
@@ -815,7 +830,7 @@ class InfoBox(QDialog):
     def gotoclose(self):
         self.close()
 
-#creating welcomescreen class
+#creating welcomescreen class, the main login screen which shows first
 class WelcomeScreen(QMainWindow):
     #initializing and loading welcome screen
     def __init__(self):
@@ -854,7 +869,6 @@ class WelcomeScreen(QMainWindow):
             result_pass = cursor.fetchone()
 
             if result_pass is not None:
-                #login to dashboard
                 if result_pass[0] == password:
                     print("Successfully logged in.")
                     dashboard = dashBoard()
@@ -865,7 +879,7 @@ class WelcomeScreen(QMainWindow):
             else:
                 self.error.setText("Invalid username or password")
 
-#creating signupscreen class
+#creating signupscreen class, users signup here
 class SignUpScreen(QDialog):
     #initializing and loading signup screen
     def __init__(self):
@@ -880,7 +894,7 @@ class SignUpScreen(QDialog):
         self.signupbutton.clicked.connect(self.gotosignup)
         self.backtologin.clicked.connect(self.gotologin)
 
-    #loggin out back to welcome screen
+    #logging out back to welcome screen
     def gotologin(self):
         welcome = WelcomeScreen()
         widget.addWidget(welcome)
@@ -912,6 +926,7 @@ class SignUpScreen(QDialog):
                 mydb.commit()
                 self.signuperror.setText("Added new user to database. Successful!")
 
+#creating clientscreen class
 class ClientScreen(QDialog):	
     #initializing and loading client screen	
     def __init__(self):	
@@ -919,12 +934,13 @@ class ClientScreen(QDialog):
         loadUi("addClient.ui", self)	
         self.homeButton.clicked.connect(self.gotodash)	
         self.addButton.clicked.connect(self.addprocess)	
-        self.logout.clicked.connect(self.gotologout)	
+        self.logout.clicked.connect(self.gotologout)
         self.rnofield.setPlaceholderText("Roll number of client")
         self.namefield.setPlaceholderText("Name of the client")
         self.phonefield.setPlaceholderText("Phone number of client")
-        self.efield.setPlaceholderText("EmailID of client")
+        self.efield.setPlaceholderText("EmailID of client")	
 
+    #adding a new client
     def addprocess(self):	
         rno=self.rnofield.text()	
         name=self.namefield.text()	
@@ -960,7 +976,7 @@ class ClientScreen(QDialog):
         widget.addWidget(welcome)	
         widget.setCurrentWidget(welcome)
 
-#creating dashboard class
+#creating dashboard class, main dashboard from where one can navigate
 class dashBoard(QDialog):
     #initialising and loading dashboard
     def __init__(self):
@@ -974,13 +990,11 @@ class dashBoard(QDialog):
         cursor.execute("SELECT name FROM login_info WHERE username = '"+username+"'")
         greetname = cursor.fetchone()[0]
         self.name.setText("Hello "+greetname+"!")
-        
-    #logout to welcome screen
+
     def gotologout(self):
         welcome = WelcomeScreen()
         widget.addWidget(welcome)
         widget.setCurrentWidget(welcome)
-        #os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
 
     def gotoaddclient(self):	
         clientscreen=ClientScreen()	
@@ -1009,10 +1023,8 @@ widget = QStackedWidget()
 widget.setWindowIcon(QtGui.QIcon("icon.png"))
 welcome = WelcomeScreen()
 signup = SignUpScreen()
-#dashboard = dashBoard()
 widget.addWidget(welcome)
 widget.addWidget(signup)
-#widget.addWidget(dashboard)
 widget.setWindowTitle("VME Library Management")
 widget.resize(1400, 750)
 widget.show()
