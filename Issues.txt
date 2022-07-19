@@ -29,7 +29,12 @@ HOW:
 THE PAGE IS NOT SCROLLABLE BUT THE TABLE IS SCROLLABLE
 
 DOUBTS:<time constraints>
-1;The initial welcome screen may not be added.
+#1;The initial welcome screen may not be added.
 2;Map maynot be produced
 3;Creating qr and sending to teachers may not be done
+
+ENHANCEMENTS PLANNED:
+1.Uploading the data of the tables as an excel sheet as manual adding of book info is tedious.
+2.Packaging the whole program as an exe file.
+3.Using SQLITE instead of mysql for easier useage
 
