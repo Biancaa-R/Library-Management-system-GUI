@@ -1,3 +1,5 @@
+STYLE SHHETS USED IN UI FILES:
+
 QWidget#bgwidget{background-color: qlineargradient(spread:pad, x1:0.125, y1:0.756, x2:1, y2:0, stop:0 rgba(85, 255, 255, 255), stop:1 rgba(187, 0, 255, 255))}
 
 QWidget#bgwidget{background-color: qlineargradient(spread:pad, x1:0.125, y1:0.756, x2:1, y2:0, stop:0 rgba(117, 240, 254, 255), stop:1 rgba(193, 38, 236, 255))}
