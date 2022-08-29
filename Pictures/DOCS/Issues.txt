@@ -1,0 +1,29 @@
+MINOR:
+1; The command to clear the page ie. to start program again doesnot work, system responds by closing the whole program. It is to be noted that this feature worked in linux os.
+2;The icon applied is not visible in the footer bar
+3; In searching for a record, The user may enter a wrong category
+4;Producing a map for an ever changing library
+5;For sending the qr, info of issue automatic messaging with either whatsapp or mail can be used the pc should have a good internet supply
+6:Xampp and cmd should be open continuously for the processes to taake place.
+
+MAJOR:
+1: The auto incremented values of sno does not change when a record is deleted (serious threat)
+ex'
+incase 2 is deleted:
+
+1               1
+2               3
+3               4
+4    ------>    
+ 
+expected outcome:
+The next values should move one value down.
+3 should become 2
+
+2;Its almost impossible to scroll screen in pyqt5. After some usage tables may span more than 1 page
+
+DOUBTS:<time constraints>
+1;The initial welcome screen may not be added.
+2;Map maynot be produced
+3;Creating qr and sending to teachers may not be done
+
